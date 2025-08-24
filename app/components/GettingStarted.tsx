@@ -49,7 +49,7 @@ export default function GettingStarted() {
       </View>
 
       {/* Continue Button */}
-      <TouchableOpacity style={styles.button} onPress={() => router.replace('/components/signup/SignUp')}>
+      <TouchableOpacity style={styles.button} onPress={() => {router.replace('/components/signup/SignUp')}}>
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableOpacity>
     </View>

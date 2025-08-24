@@ -1,7 +1,7 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, Image, Modal, Dimensions } from 'react-native';
-import Navigation from './BottomNavigation';
+import Navigation from '../navigation/BottomNavigation';
 
 const { width, height } = Dimensions.get('window');
 
@@ -35,7 +35,7 @@ function Dashboard() {
       image: require('@/assets/images/strawberry.jpeg'),
       calories: 50,
       price: 3.99,
-      category:"Fruits",
+      category: "Fruits",
       description: 'Fresh strawberries perfect for desserts and smoothies.',
     },
     {
@@ -44,26 +44,26 @@ function Dashboard() {
       image: require('@/assets/images/apples.jpeg'),
       calories: 80,
       price: 2.49,
-      category:"Fruits",
+      category: "Fruits",
       description: 'Crisp and juicy apples, great for snacking.',
     },
     {
-        id: 3,
-        name: 'Grapes',
-        image: require('@/assets/images/grapes.jpeg'),
-        calories: 60,
-        price: 4.29,
-        category:"Fruits",
-        description: 'Sweet and seedless grapes, ideal for salads and snacks.',
+      id: 3,
+      name: 'Grapes',
+      image: require('@/assets/images/grapes.jpeg'),
+      calories: 60,
+      price: 4.29,
+      category: "Fruits",
+      description: 'Sweet and seedless grapes, ideal for salads and snacks.',
     },
     {
-        id: 4,
-        name: 'Bananas',
-        image: require('@/assets/images/bananas.jpeg'),
-        calories: 90,
-        category:"Fruits",
-        price: 1.29,
-        description: 'Ripe bananas, perfect for smoothies and baking.',
+      id: 4,
+      name: 'Bananas',
+      image: require('@/assets/images/bananas.jpeg'),
+      calories: 90,
+      category: "Fruits",
+      price: 1.29,
+      description: 'Ripe bananas, perfect for smoothies and baking.',
     },
     // Add more products here
   ];
@@ -185,11 +185,50 @@ function Dashboard() {
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
               <Image source={selectedProduct.image} style={styles.modalImage} />
-              <Text style={styles.modalName}>{selectedProduct.name}</Text>
-              <Text style={styles.modalCalories}>{selectedProduct.calories} kcal</Text>
-              <Text style={styles.modalPrice}>${selectedProduct.price.toFixed(2)}</Text>
+              <Text style={styles.title}>{selectedProduct.name}</Text>
+              <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+                <Text style={styles.modalCalories}>{selectedProduct.calories} kcal</Text>
+                <Text style={styles.modalPrice}>${selectedProduct.price.toFixed(2)}</Text>
+              </View>
+              <Text style={[styles.subTitle, { marginTop: 10 }]}>Product description</Text>
               <Text style={styles.modalDescription}>{selectedProduct.description}</Text>
-
+              <Text style={[styles.subTitle, { marginTop: 10 }]}>Product Review</Text>
+              <View style={{ flex: 1, width: "100%", marginTop: 20 }}>
+                <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", width: "100%" }}>
+                  <View style={{ alignSelf: "flex-start", marginTop: 10, flexDirection: "row", gap: 10, alignItems: "center" }}>
+                    <Image source={selectedProduct.image} style={{ width: 40, height: 40, borderRadius: 20 }} />
+                    <Text style={{ fontSize: 18, color: '#162447', marginTop: 8, textAlign: 'center', alignSelf: "flex-start", fontFamily: 'NunitoBold'}}>Daniella Ganza</Text>
+                  </View>
+                  <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+                    <MaterialIcons name='star' color={'yellow'} size={24} />
+                    <MaterialIcons name='star' color={'yellow'} size={24} />
+                    <MaterialIcons name='star' color={'yellow'} size={24} />
+                    <MaterialIcons name='star' color={'yellow'} size={24} />
+                    <MaterialIcons name='star' color={'grey'} size={24} />
+                  </View>
+                </View>
+                <Text style={{ margin: 20  ,fontSize:16, color: '#162447', marginTop: 8, textAlign: 'center', alignSelf: "flex-start", fontFamily: 'NunitoRegular'}}>
+                  Something That blew my mind entirely praise the lord for inventing strawberries
+                </Text>
+              </View>
+              <View style={{ flex: 1, width: "100%", marginTop: 20 }}>
+                <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", width: "100%" }}>
+                  <View style={{ alignSelf: "flex-start", marginTop: 10, flexDirection: "row", gap: 10, alignItems: "center" }}>
+                    <Image source={selectedProduct.image} style={{ width: 40, height: 40, borderRadius: 20 }} />
+                    <Text style={{ fontSize: 18, color: '#162447', marginTop: 8, textAlign: 'center', alignSelf: "flex-start", fontFamily: 'NunitoBold'}}>Daniella Ganza</Text>
+                  </View>
+                  <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+                    <MaterialIcons name='star' color={'yellow'} size={24} />
+                    <MaterialIcons name='star' color={'yellow'} size={24} />
+                    <MaterialIcons name='star' color={'yellow'} size={24} />
+                    <MaterialIcons name='star' color={'yellow'} size={24} />
+                    <MaterialIcons name='star' color={'grey'} size={24} />
+                  </View>
+                </View>
+                <Text style={{ margin: 20  ,fontSize:16, color: '#162447', marginTop: 8, textAlign: 'center', alignSelf: "flex-start", fontFamily: 'NunitoRegular'}}>
+                  Something That blew my mind entirely praise the lord for inventing strawberries
+                </Text>
+              </View>
               <TouchableOpacity onPress={closeProductModal} style={styles.modalCloseButton}>
                 <MaterialIcons name="close" size={28} color="#fff" />
               </TouchableOpacity>
@@ -197,7 +236,6 @@ function Dashboard() {
           </View>
         </Modal>
       )}
-      <Navigation/>
     </View>
   );
 }
@@ -226,12 +264,12 @@ const styles = StyleSheet.create({
 
   // Modal Styles
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center' },
-  modalContent: { width: width * 0.85, backgroundColor: '#fff', borderRadius: 20, padding: 20, alignItems: 'center', position: 'relative' },
+  modalContent: { width: width * 0.85, backgroundColor: '#fff', borderRadius: 20, padding: 20, alignItems: "flex-start", position: 'relative' },
   modalImage: { width: '100%', height: 200, resizeMode: 'contain', borderRadius: 15 },
-  modalName: { fontSize: 22, fontWeight: '700', color: '#162447', marginTop: 12, fontFamily: 'NunitoBold' },
+  modalName: { fontSize: 22, fontWeight: '700', color: '#162447', marginTop: 12, fontFamily: 'NunitoBold', alignSelf: "flex-start" },
   modalCalories: { fontSize: 16, color: '#555', marginTop: 4, fontFamily: 'NunitoRegular' },
   modalPrice: { fontSize: 18, color: '#fca311', marginTop: 4, fontFamily: 'NunitoBold' },
-  modalDescription: { fontSize: 16, color: '#162447', marginTop: 8, textAlign: 'center', fontFamily: 'NunitoRegular' },
+  modalDescription: { fontSize: 16, color: '#162447', marginTop: 8, textAlign: 'center', alignSelf: "flex-start", fontFamily: 'NunitoRegular' },
   modalCloseButton: { position: 'absolute', top: 10, right: 10, backgroundColor: '#162447', borderRadius: 20, padding: 4 },
 });
 
