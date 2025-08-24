@@ -51,7 +51,7 @@ function SignIn() {
             </TouchableOpacity>
         </View>
         {/* Sign In Button */}
-        <TouchableOpacity style={styles.button} onPress={() => router.replace('/components/screens/Dashboard')}>
+        <TouchableOpacity style={styles.button} onPress={() => router.replace('/components/navigation/Dashboard')}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
 

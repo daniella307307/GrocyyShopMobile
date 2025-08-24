@@ -59,7 +59,7 @@ function SignUp() {
         </View>
 
         {/* Sign Up Button */}
-        <TouchableOpacity style={styles.button} onPress={() => router.replace('/components/screens/Dashboard')}>
+        <TouchableOpacity style={styles.button} onPress={() => router.replace('/components/navigation/Dashboard')}>
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
 

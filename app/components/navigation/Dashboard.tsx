@@ -1,6 +1,7 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, Image, Modal, Dimensions } from 'react-native';
+import Navigation from './BottomNavigation';
 
 const { width, height } = Dimensions.get('window');
 
@@ -34,6 +35,7 @@ function Dashboard() {
       image: require('@/assets/images/strawberry.jpeg'),
       calories: 50,
       price: 3.99,
+      category:"Fruits",
       description: 'Fresh strawberries perfect for desserts and smoothies.',
     },
     {
@@ -42,6 +44,7 @@ function Dashboard() {
       image: require('@/assets/images/apples.jpeg'),
       calories: 80,
       price: 2.49,
+      category:"Fruits",
       description: 'Crisp and juicy apples, great for snacking.',
     },
     {
@@ -50,6 +53,7 @@ function Dashboard() {
         image: require('@/assets/images/grapes.jpeg'),
         calories: 60,
         price: 4.29,
+        category:"Fruits",
         description: 'Sweet and seedless grapes, ideal for salads and snacks.',
     },
     {
@@ -57,6 +61,7 @@ function Dashboard() {
         name: 'Bananas',
         image: require('@/assets/images/bananas.jpeg'),
         calories: 90,
+        category:"Fruits",
         price: 1.29,
         description: 'Ripe bananas, perfect for smoothies and baking.',
     },
@@ -192,6 +197,7 @@ function Dashboard() {
           </View>
         </Modal>
       )}
+      <Navigation/>
     </View>
   );
 }
